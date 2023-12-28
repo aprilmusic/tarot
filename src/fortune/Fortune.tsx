@@ -71,7 +71,9 @@ export default function Fortune({
           );
         })}
       </Stack>
-      {fortune.length > 0 ? <p>{fortune[0].text}</p> : <p>LOADING</p>}
+      <p style={{ alignSelf: "center", marginTop: "10px" }}>
+        {fortune.length > 0 ? fortune[0].text : "LOADING"}
+      </p>
     </Stack>
   );
 }

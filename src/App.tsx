@@ -79,7 +79,7 @@ function App() {
     }, and my third card is ${
       tarotJson.find((x) => x.number === deckOrder[2])?.name
     }. Please help me 
-    interpret these cards.`;
+    interpret these cards, and begin your response with, "The spirits have answered."`;
     const newQuestionId = uuidv4();
     setQuestionId(newQuestionId);
     console.log({ message, questionId, sessionId });
@@ -137,9 +137,10 @@ function App() {
               // Reset everything
               setFortuneCards([null, null, null]);
               setClickerOpen(!clickerOpen);
+              setQuestionId("");
             }}
           >
-            Select my cards
+            {clickerOpen ? "Reselect" : "Select"} my cards
           </Button>
         )}
         {clickerOpen && !fortuneCards.some((x) => x) && (
