@@ -12,6 +12,11 @@ export default defineSchema({
     sessionId: v.string(),
     text: v.string(),
   }).index("bySessionId", ["sessionId"]),
+  fortunes: defineTable({
+    sessionId: v.string(),
+    questionId: v.string(),
+    text: v.string(),
+  }).index("bySessionId", ["sessionId"]),
   threads: defineTable({
     sessionId: v.string(),
     threadId: v.string(),

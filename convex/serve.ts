@@ -15,8 +15,9 @@ export const answer = internalAction({
   args: {
     sessionId: v.string(),
     message: v.string(),
+    questionId: v.string(),
   },
-  handler: async (ctx, { sessionId, message }) => {
+  handler: async (ctx, { sessionId, message, questionId }) => {
     const openai = new OpenAI();
 
     const threadId = await getOrCreateThread(ctx, openai, sessionId);
@@ -30,7 +31,7 @@ export const answer = internalAction({
       assistant_id: process.env.ASSISTANT_ID!,
     });
 
-    await pollForAnswer(ctx, { threadId, sessionId, lastMessageId, runId });
+    await pollForAnswer(ctx, { threadId, sessionId, lastMessageId, runId, questionId });
   },
 });
 
@@ -69,6 +70,7 @@ export const saveThread = internalMutation(
   }
 );
 
+
 async function pollForAnswer(
   ctx: ActionCtx,
   args: {
@@ -76,9 +78,10 @@ async function pollForAnswer(
     threadId: string;
     runId: string;
     lastMessageId: string;
+    questionId: string;
   }
 ) {
-  const { sessionId, threadId, runId, lastMessageId } = args;
+  const { sessionId, threadId, runId, lastMessageId, questionId } = args;
   const openai = new OpenAI();
   while (true) {
     await sleep(500);
@@ -87,9 +90,10 @@ async function pollForAnswer(
       case "failed":
       case "expired":
       case "cancelled":
-        await ctx.runMutation(internal.serve.addMessage, {
-          text: "I cannot reply at this time. Reach out to the team on Discord",
+        await ctx.runMutation(internal.serve.addFortune, {
+          text: "I cannot reply at this time.",
           sessionId,
+          questionId,
         });
         return;
       case "completed": {
@@ -102,7 +106,7 @@ async function pollForAnswer(
             .filter((item): item is MessageContentText => item.type === "text")
             .map(({ text }) => text.value)
             .join("\n\n");
-          await ctx.runMutation(internal.serve.addMessage, { text, sessionId });
+          await ctx.runMutation(internal.serve.addFortune, { text, sessionId, questionId });
         });
         return;
       }
@@ -110,12 +114,12 @@ async function pollForAnswer(
   }
 }
 
-export const addMessage = internalMutation(
-  async (ctx, { text, sessionId }: { text: string; sessionId: string }) => {
-    await ctx.db.insert("messages", {
-      isViewer: false,
+export const addFortune = internalMutation(
+  async (ctx, { text, sessionId, questionId }: { text: string; sessionId: string; questionId: string }) => {
+    await ctx.db.insert("fortunes", {
       text,
       sessionId,
+      questionId,
     });
   }
 );

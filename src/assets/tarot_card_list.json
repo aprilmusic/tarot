@@ -1,0 +1,484 @@
+[
+    {
+      "name": "The Fool",
+      "number": 0,
+      "arcana": "Major Arcana",
+      "meaning": "New beginnings, spontaneity, innocence"
+    },
+    {
+      "name": "The Magician",
+      "number": 1,
+      "arcana": "Major Arcana",
+      "meaning": "Manifestation, power, resourcefulness"
+    },
+    {
+      "name": "The High Priestess",
+      "number": 2,
+      "arcana": "Major Arcana",
+      "meaning": "Intuition, mystery, unconscious knowledge"
+    },
+    {
+      "name": "The Empress",
+      "number": 3,
+      "arcana": "Major Arcana",
+      "meaning": "Fertility, nurturing, abundance"
+    },
+    {
+      "name": "The Emperor",
+      "number": 4,
+      "arcana": "Major Arcana",
+      "meaning": "Authority, leadership, structure"
+    },
+    {
+      "name": "The Hierophant",
+      "number": 5,
+      "arcana": "Major Arcana",
+      "meaning": "Tradition, spiritual guidance, conformity"
+    },
+    {
+      "name": "The Lovers",
+      "number": 6,
+      "arcana": "Major Arcana",
+      "meaning": "Love, union, choices"
+    },
+    {
+      "name": "The Chariot",
+      "number": 7,
+      "arcana": "Major Arcana",
+      "meaning": "Willpower, determination, triumph"
+    },
+    {
+      "name": "Strength",
+      "number": 8,
+      "arcana": "Major Arcana",
+      "meaning": "Inner strength, courage, patience"
+    },
+    {
+      "name": "The Hermit",
+      "number": 9,
+      "arcana": "Major Arcana",
+      "meaning": "Reflection, solitude, inner guidance"
+    },
+    {
+      "name": "Wheel of Fortune",
+      "number": 10,
+      "arcana": "Major Arcana",
+      "meaning": "Change, cycles, destiny"
+    },
+    {
+      "name": "Justice",
+      "number": 11,
+      "arcana": "Major Arcana",
+      "meaning": "Fairness, truth, balance"
+    },
+    {
+      "name": "The Hanged Man",
+      "number": 12,
+      "arcana": "Major Arcana",
+      "meaning": "Sacrifice, surrender, new perspectives"
+    },
+    {
+      "name": "Death",
+      "number": 13,
+      "arcana": "Major Arcana",
+      "meaning": "Transformation, change, new beginnings"
+    },
+    {
+      "name": "Temperance",
+      "number": 14,
+      "arcana": "Major Arcana",
+      "meaning": "Balance, moderation, harmony"
+    },
+    {
+      "name": "The Devil",
+      "number": 15,
+      "arcana": "Major Arcana",
+      "meaning": "Materialism, temptation, bondage"
+    },
+    {
+      "name": "The Tower",
+      "number": 16,
+      "arcana": "Major Arcana",
+      "meaning": "Sudden change, upheaval, revelation"
+    },
+    {
+      "name": "The Star",
+      "number": 17,
+      "arcana": "Major Arcana",
+      "meaning": "Hope, inspiration, spiritual insight"
+    },
+    {
+      "name": "The Moon",
+      "number": 18,
+      "arcana": "Major Arcana",
+      "meaning": "Intuition, subconscious, illusions"
+    },
+    {
+      "name": "The Sun",
+      "number": 19,
+      "arcana": "Major Arcana",
+      "meaning": "Joy, success, vitality"
+    },
+    {
+      "name": "Judgment",
+      "number": 20,
+      "arcana": "Major Arcana",
+      "meaning": "Rebirth, renewal, inner calling"
+    },
+    {
+      "name": "The World",
+      "number": 21,
+      "arcana": "Major Arcana",
+      "meaning": "Completion, fulfillment, wholeness"
+    },
+  
+    {
+        "name": "Ace of Cups",
+        "number": 22,
+        "arcana": "Cups",
+        "meaning": "Emotional new beginnings, love, intuition"
+      },
+      {
+        "name": "Two of Cups",
+        "number": 23,
+        "arcana": "Cups",
+        "meaning": "Connection, partnership, mutual attraction"
+      },
+      {
+        "name": "Three of Cups",
+        "number": 24,
+        "arcana": "Cups",
+        "meaning": "Celebration, friendship, joy"
+      },
+      {
+        "name": "Four of Cups",
+        "number": 25,
+        "arcana": "Cups",
+        "meaning": "Contemplation, introspection, reevaluation"
+      },
+      {
+        "name": "Five of Cups",
+        "number": 26,
+        "arcana": "Cups",
+        "meaning": "Loss, grief, moving on"
+      },
+      {
+        "name": "Six of Cups",
+        "number": 27,
+        "arcana": "Cups",
+        "meaning": "Nostalgia, childhood memories, innocence"
+      },
+      {
+        "name": "Seven of Cups",
+        "number": 28,
+        "arcana": "Cups",
+        "meaning": "Choices, fantasies, illusions"
+      },
+      {
+        "name": "Eight of Cups",
+        "number": 29,
+        "arcana": "Cups",
+        "meaning": "Seeking a deeper meaning, transition, moving on"
+      },
+      {
+        "name": "Nine of Cups",
+        "number": 30,
+        "arcana": "Cups",
+        "meaning": "Fulfillment, emotional satisfaction, wishes granted"
+      },
+      {
+        "name": "Ten of Cups",
+        "number": 31,
+        "arcana": "Cups",
+        "meaning": "Happy family life, emotional fulfillment, harmony"
+      },
+      {
+        "name": "Page of Cups",
+        "number": 32,
+        "arcana": "Cups",
+        "meaning": "Creative opportunities, intuitive messages, sensitivity"
+      },
+      {
+        "name": "Knight of Cups",
+        "number": 33,
+        "arcana": "Cups",
+        "meaning": "Romantic pursuit, emotional maturity, creativity"
+      },
+      {
+        "name": "Queen of Cups",
+        "number": 34,
+        "arcana": "Cups",
+        "meaning": "Emotional support, intuition, compassion"
+      },
+      {
+        "name": "King of Cups",
+        "number": 35,
+        "arcana": "Cups",
+        "meaning": "Emotional balance, control over emotions, compassion"
+      },
+      {
+        "name": "Ace of Swords",
+        "number": 36,
+        "arcana": "Swords",
+        "meaning": "Clarity, truth, mental breakthrough"
+      },
+      {
+        "name": "Two of Swords",
+        "number": 37,
+        "arcana": "Swords",
+        "meaning": "Decision-making, balance, truce"
+      },
+      {
+        "name": "Three of Swords",
+        "number": 38,
+        "arcana": "Swords",
+        "meaning": "Heartbreak, sorrow, grief"
+      },
+      {
+        "name": "Four of Swords",
+        "number": 39,
+        "arcana": "Swords",
+        "meaning": "Rest, recuperation, contemplation"
+      },
+      {
+        "name": "Five of Swords",
+        "number": 40,
+        "arcana": "Swords",
+        "meaning": "Conflict, loss, acceptance"
+      },
+      {
+        "name": "Six of Swords",
+        "number": 41,
+        "arcana": "Swords",
+        "meaning": "Transition, moving on, mental peace"
+      },
+      {
+        "name": "Seven of Swords",
+        "number": 42,
+        "arcana": "Swords",
+        "meaning": "Deception, betrayal, stealth"
+      },
+      {
+        "name": "Eight of Swords",
+        "number": 43,
+        "arcana": "Swords",
+        "meaning": "Feeling trapped, self-imposed restrictions, seeking a way out"
+      },
+      {
+        "name": "Nine of Swords",
+        "number": 44,
+        "arcana": "Swords",
+        "meaning": "Anxiety, nightmares, inner turmoil"
+      },
+      {
+        "name": "Ten of Swords",
+        "number": 45,
+        "arcana": "Swords",
+        "meaning": "Endings, rock bottom, embracing change"
+      },
+      {
+        "name": "Page of Swords",
+        "number": 46,
+        "arcana": "Swords",
+        "meaning": "Curiosity, new ideas, vigilant observation"
+      },
+      {
+        "name": "Knight of Swords",
+        "number": 47,
+        "arcana": "Swords",
+        "meaning": "Ambition, determination, swift action"
+      },
+      {
+        "name": "Queen of Swords",
+        "number": 48,
+        "arcana": "Swords",
+        "meaning": "Clarity, wisdom, independence"
+      },
+      {
+        "name": "King of Swords",
+        "number": 49,
+        "arcana": "Swords",
+        "meaning": "Intellectual power, authority, truth"
+      },
+    {
+      "name": "Ace of Wands",
+      "number": 1,
+      "arcana": "Wands",
+      "meaning": "New opportunities, inspiration, potential"
+    },
+    {
+      "name": "Two of Wands",
+      "number": 2,
+      "arcana": "Wands",
+      "meaning": "Planning, future possibilities, personal power"
+    },
+    {
+        "name": "Ace of Wands",
+        "number": 50,
+        "arcana": "Wands",
+        "meaning": "New opportunities, inspiration, potential"
+      },
+      {
+        "name": "Two of Wands",
+        "number": 51,
+        "arcana": "Wands",
+        "meaning": "Planning, future possibilities, personal power"
+      },
+      {
+        "name": "Three of Wands",
+        "number": 52,
+        "arcana": "Wands",
+        "meaning": "Exploration, expansion, foresight"
+      },
+      {
+        "name": "Four of Wands",
+        "number": 53,
+        "arcana": "Wands",
+        "meaning": "Celebration, harmony, achievement"
+      },
+      {
+        "name": "Five of Wands",
+        "number": 54,
+        "arcana": "Wands",
+        "meaning": "Conflict, competition, diversity"
+      },
+      {
+        "name": "Six of Wands",
+        "number": 55,
+        "arcana": "Wands",
+        "meaning": "Victory, recognition, success"
+      },
+      {
+        "name": "Seven of Wands",
+        "number": 56,
+        "arcana": "Wands",
+        "meaning": "Defensiveness, standing your ground, resilience"
+      },
+      {
+        "name": "Eight of Wands",
+        "number": 57,
+        "arcana": "Wands",
+        "meaning": "Swift action, progress, movement"
+      },
+      {
+        "name": "Nine of Wands",
+        "number": 58,
+        "arcana": "Wands",
+        "meaning": "Resilience, persistence, determination"
+      },
+      {
+        "name": "Ten of Wands",
+        "number": 59,
+        "arcana": "Wands",
+        "meaning": "Burden, responsibility, completion"
+      },
+      {
+        "name": "Page of Wands",
+        "number": 60,
+        "arcana": "Wands",
+        "meaning": "Exploration, enthusiasm, discovery"
+      },
+      {
+        "name": "Knight of Wands",
+        "number": 61,
+        "arcana": "Wands",
+        "meaning": "Adventurous, energetic, pursuing passions"
+      },
+      {
+        "name": "Queen of Wands",
+        "number": 62,
+        "arcana": "Wands",
+        "meaning": "Confident, dynamic, nurturing leadership"
+      },
+      {
+        "name": "King of Wands",
+        "number": 63,
+        "arcana": "Wands",
+        "meaning": "Charismatic, inspiring, visionary leadership"
+      },
+      {
+        "name": "Ace of Pentacles",
+        "number": 64,
+        "arcana": "Pentacles",
+        "meaning": "Material stability, financial opportunity, prosperity"
+      },
+      {
+        "name": "Two of Pentacles",
+        "number": 65,
+        "arcana": "Pentacles",
+        "meaning": "Balance, adaptability, juggling priorities"
+      },
+      {
+        "name": "Three of Pentacles",
+        "number": 66,
+        "arcana": "Pentacles",
+        "meaning": "Teamwork, collaboration, recognition"
+      },
+      {
+        "name": "Four of Pentacles",
+        "number": 67,
+        "arcana": "Pentacles",
+        "meaning": "Security, stability, holding onto possessions"
+      },
+      {
+        "name": "Five of Pentacles",
+        "number": 68,
+        "arcana": "Pentacles",
+        "meaning": "Hard times, financial loss, isolation"
+      },
+      {
+        "name": "Six of Pentacles",
+        "number": 69,
+        "arcana": "Pentacles",
+        "meaning": "Generosity, charity, sharing wealth"
+      },
+      {
+        "name": "Seven of Pentacles",
+        "number": 70,
+        "arcana": "Pentacles",
+        "meaning": "Assessment, patience, long-term plans"
+      },
+      {
+        "name": "Eight of Pentacles",
+        "number": 71,
+        "arcana": "Pentacles",
+        "meaning": "Diligence, craftsmanship, honing skills"
+      },
+      {
+        "name": "Nine of Pentacles",
+        "number": 72,
+        "arcana": "Pentacles",
+        "meaning": "Abundance, financial independence, luxury"
+      },
+      {
+        "name": "Ten of Pentacles",
+        "number": 73,
+        "arcana": "Pentacles",
+        "meaning": "Legacy, inheritance, family wealth"
+      },
+      {
+        "name": "Page of Pentacles",
+        "number": 74,
+        "arcana": "Pentacles",
+        "meaning": "New opportunities, practicality, learning"
+      },
+      {
+        "name": "Knight of Pentacles",
+        "number": 75,
+        "arcana": "Pentacles",
+        "meaning": "Hard work, responsibility, reliability"
+      },
+      {
+        "name": "Queen of Pentacles",
+        "number": 76,
+        "arcana": "Pentacles",
+        "meaning": "Nurturing, practical, financial security"
+      },
+      {
+        "name": "King of Pentacles",
+        "number": 77,
+        "arcana": "Pentacles",
+        "meaning": "Wealth, business acumen, financial success"
+      }
+
+]

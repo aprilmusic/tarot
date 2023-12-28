@@ -15,33 +15,36 @@ export const list = query({
   },
 });
 
+
+export const getFortune = query({
+  args: {
+    sessionId: v.string(),
+    questionId: v.string()
+  },
+  handler: async (ctx, { sessionId, questionId }) => {
+    const fortunes = await ctx.db
+    .query("fortunes")
+    .filter((q) => q.eq(q.field("questionId"), questionId) && q.eq(q.field("sessionId"), sessionId))
+    .order("desc")
+    .take(1)
+    console.log('getFortune backend')
+    console.log(fortunes);
+   return fortunes; 
+  },
+});
+
 export const send = mutation({
   args: {
     message: v.string(),
     sessionId: v.string(),
+    questionId: v.string(),
   },
-  handler: async (ctx, { message, sessionId }) => {
-    await ctx.db.insert("messages", {
-      isViewer: true,
-      text: message,
-      sessionId,
-    });
+  handler: async (ctx, { message, sessionId, questionId }) => {
     await ctx.scheduler.runAfter(0, internal.serve.answer, {
       sessionId,
       message,
+      questionId,
     });
   },
 });
 
-export const clear = mutation({
-  args: {
-    sessionId: v.string(),
-  },
-  handler: async (ctx, args) => {
-    const messages = await ctx.db
-      .query("messages")
-      .withIndex("bySessionId", (q) => q.eq("sessionId", args.sessionId))
-      .collect();
-    await Promise.all(messages.map((message) => ctx.db.delete(message._id)));
-  },
-});
