@@ -20,7 +20,7 @@ export const answer = internalAction({
   handler: async (ctx, { sessionId, message, questionId }) => {
     const openai = new OpenAI();
 
-    const threadId = await getOrCreateThread(ctx, openai, sessionId);
+    const { id: threadId } = await openai.beta.threads.create();
 
     const { id: lastMessageId } = await openai.beta.threads.messages.create(
       threadId,

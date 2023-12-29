@@ -93,7 +93,9 @@ export default function Fortune({
           }}
           spacing="45px"
         >
-          <p style={{ alignSelf: "center" }}>Your fortune is loading </p>
+          <p style={{ alignSelf: "center" }}>
+            Your fortune is loading. This can take up to a minute.{" "}
+          </p>
           <PuffLoader
             loading={true}
             size={40}
