@@ -35,22 +35,22 @@ export const answer = internalAction({
   },
 });
 
-const getOrCreateThread = async (
-  ctx: ActionCtx,
-  openai: OpenAI,
-  sessionId: string
-) => {
-  const thread = await ctx.runQuery(internal.serve.getThread, { sessionId });
-  if (thread !== null) {
-    return thread.threadId;
-  }
-  const { id: threadId } = await openai.beta.threads.create();
-  await ctx.runMutation(internal.serve.saveThread, {
-    sessionId,
-    threadId,
-  });
-  return threadId;
-};
+// const getOrCreateThread = async (
+//   ctx: ActionCtx,
+//   openai: OpenAI,
+//   sessionId: string
+// ) => {
+//   const thread = await ctx.runQuery(internal.serve.getThread, { sessionId });
+//   if (thread !== null) {
+//     return thread.threadId;
+//   }
+//   const { id: threadId } = await openai.beta.threads.create();
+//   await ctx.runMutation(internal.serve.saveThread, {
+//     sessionId,
+//     threadId,
+//   });
+//   return threadId;
+// };
 
 export const getThread = internalQuery(
   async (ctx, { sessionId }: { sessionId: string }) => {
