@@ -79,11 +79,12 @@ function App() {
     }, and my third card is ${
       tarotJson.find((x) => x.number === deckOrder[2])?.name
     }. If the question is a yes or no question, interpret the first card as "what will happen if yes", the 
-    second card as "what will happen if no", and the third card as context. Please help me 
+    second card as "what will happen if no", and the third card as context. If it is not a yes or no question, 
+    interpret all of the cards as general context for the question. Please help me 
     interpret these cards, and begin your response with, "The spirits have answered." Express your answer 
-    as a json, where the the first sentence is labeled intro, the analysis of the first card is labeled first_card,
-     the analysis of the second card is labeled second_card, the analysis of the third card is labeled third_card,
-      and the rest is labeled conclusion.
+    as a json, where the the first sentence is labeled intro, the analysis of the first card is labeled first_card, 
+    the analysis of the second card is labeled second_card, the analysis of the third card is labeled third_card, 
+    and the rest is labeled conclusion.
     `;
     const newQuestionId = uuidv4();
     setQuestionId(newQuestionId);
