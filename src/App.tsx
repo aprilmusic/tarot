@@ -78,7 +78,8 @@ function App() {
       tarotJson.find((x) => x.number === deckOrder[1])?.name
     }, and my third card is ${
       tarotJson.find((x) => x.number === deckOrder[2])?.name
-    }. Please help me 
+    }. If the question is a yes or no question, interpret the first card as "what will happen if yes", the 
+    second card as "what will happen if no", and the third card as context. Please help me 
     interpret these cards, and begin your response with, "The spirits have answered."`;
     const newQuestionId = uuidv4();
     setQuestionId(newQuestionId);
