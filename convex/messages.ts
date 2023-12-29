@@ -27,7 +27,7 @@ export const getFortune = query({
     .filter((q) => q.eq(q.field("questionId"), questionId) && q.eq(q.field("sessionId"), sessionId))
     .order("desc")
     .take(1)
-    console.log('getFortune backend')
+    console.log('getFortune backend args', { sessionId, questionId })
     console.log(fortunes);
    return fortunes; 
   },
