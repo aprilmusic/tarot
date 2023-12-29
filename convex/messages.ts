@@ -24,11 +24,9 @@ export const getFortune = query({
   handler: async (ctx, { sessionId, questionId }) => {
     const fortunes = await ctx.db
     .query("fortunes")
-    .filter((q) => q.eq(q.field("questionId"), questionId) && q.eq(q.field("sessionId"), sessionId))
+    .filter((q) => q.and(q.eq(q.field("questionId"), questionId), q.eq(q.field("sessionId"), sessionId)))
     .order("desc")
     .take(1)
-    console.log('getFortune backend args', { sessionId, questionId })
-    console.log(fortunes);
    return fortunes; 
   },
 });

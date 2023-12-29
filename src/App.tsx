@@ -49,10 +49,9 @@ function App() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setQuestion(inputValue);
-    // Add logic here to handle the form submission, for example, send the data to an API
-    console.log("Form submitted with value:", inputValue);
   };
 
+  // For random selection of cards
   function fisherYatesShuffle(array: Array<number>) {
     const shuffledArray = [...array];
 
@@ -67,6 +66,7 @@ function App() {
     return shuffledArray;
   }
 
+  // Prompt engineering
   const readFortune = async () => {
     const deckOrder = fisherYatesShuffle([...Array(78).keys()]);
     const selectedCards = deckOrder.slice(0, 3);
@@ -80,10 +80,13 @@ function App() {
       tarotJson.find((x) => x.number === deckOrder[2])?.name
     }. If the question is a yes or no question, interpret the first card as "what will happen if yes", the 
     second card as "what will happen if no", and the third card as context. Please help me 
-    interpret these cards, and begin your response with, "The spirits have answered."`;
+    interpret these cards, and begin your response with, "The spirits have answered." Express your answer 
+    as a json, where the the first sentence is labeled intro, the analysis of the first card is labeled first_card,
+     the analysis of the second card is labeled second_card, the analysis of the third card is labeled third_card,
+      and the rest is labeled conclusion.
+    `;
     const newQuestionId = uuidv4();
     setQuestionId(newQuestionId);
-    console.log({ message, questionId, sessionId });
     await sendMessage({ sessionId, message, questionId: newQuestionId });
   };
 
@@ -117,9 +120,6 @@ function App() {
           </Stack>
         ) : !clickerOpen ? (
           <Stack maxWidth="80%" alignSelf="center">
-            {
-              // TODO APRIL figure out centering
-            }
             <h2>{question}</h2>
             <Button color="info" onClick={() => setQuestion("")}>
               Change question

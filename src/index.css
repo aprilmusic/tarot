@@ -34,6 +34,7 @@
 
     --radius: 0.5rem;
   }
+}
 
   /* @media (prefers-color-scheme: dark) {
     :root {
@@ -66,7 +67,7 @@
       --ring: 240 4.9% 83.9%;
     }
   } */
-}
+/* }
 
 @layer base {
   * {
@@ -75,4 +76,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} */ 
