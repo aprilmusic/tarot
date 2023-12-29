@@ -1,15 +1,10 @@
 import tarotJson from "@/assets/tarot_card_list.json";
-import { Box, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import cardBack from "@/assets/card_back.png";
-import {
-  ConvexProvider,
-  ConvexReactClient,
-  useMutation,
-  useQuery,
-} from "convex/react";
+import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api.js";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 function stringifyIndex(n: number) {
   if (n === 0) {
