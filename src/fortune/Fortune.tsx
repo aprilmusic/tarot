@@ -8,39 +8,34 @@ import { useMemo } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { IMAGES } from "@/assets/tarot_card_fronts/images.js";
 
-function stringifyIndex(n: number) {
-  if (n === 0) {
-    return "first";
-  }
-  if (n === 1) {
-    return "second";
-  }
-  if (n === 2) {
-    return "third";
-  }
-}
+// function stringifyIndex(n: number) {
+//   if (n === 0) {
+//     return "first";
+//   }
+//   if (n === 1) {
+//     return "second";
+//   }
+//   if (n === 2) {
+//     return "third";
+//   }
+// }
 
 function parseFortune(rawFortune: string) {
-  const fortuneJson = JSON.parse(rawFortune);
   return (
     <Stack style={{ marginTop: "10px" }} spacing="2px">
-      <p>{fortuneJson.intro}</p>
-      <p>{fortuneJson.first_card}</p>
-      <p>{fortuneJson.second_card}</p>
-      <p>{fortuneJson.third_card}</p>
-      <p>{fortuneJson.conclusion}</p>
+      <p>{rawFortune}</p>
     </Stack>
   );
 }
 
-// TODO APRIL better stringifying of the meanings? maybe ask chatgpt lol
-
 export default function Fortune({
   cards,
+  reversalStates,
   useSessionId,
   questionId,
 }: {
   cards: Array<number | null>;
+  reversalStates: Array<boolean>;
   useSessionId: () => string;
   questionId: string;
 }) {
@@ -70,12 +65,30 @@ export default function Fortune({
               <img
                 src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}
                 alt={`${tarotCard?.name}`}
-                style={{ width: "150px", height: "auto", alignSelf: "center" }}
+                style={{
+                  width: "150px",
+                  height: "auto",
+                  alignSelf: "center",
+                  transform: reversalStates[i] ? "rotate(180deg)" : "",
+                }}
               />
-              <p style={{ maxWidth: "80%", alignSelf: "center" }}>
-                Your {stringifyIndex(i)} card is the {tarotCard?.name}, which is
-                associated with {tarotCard?.meaning.toLowerCase()}
-              </p>
+              <Stack
+                style={{
+                  alignSelf: "center",
+                }}
+              >
+                <p
+                  style={{
+                    alignSelf: "center",
+                    minHeight: "50px",
+                  }}
+                >
+                  {tarotCard?.name} {reversalStates[i] ? "(reversed)" : ""}
+                </p>
+                <p style={{ fontStyle: "italic" }}>
+                  Associations: {tarotCard?.meaning.toLowerCase()}
+                </p>
+              </Stack>
             </Stack>
           );
         })}
@@ -95,7 +108,7 @@ export default function Fortune({
           spacing="45px"
         >
           <p style={{ alignSelf: "center" }}>
-            Your fortune is loading. This can take up to a minute.{" "}
+            Your fortune is loading. This can take up to a minute.
           </p>
           <PuffLoader
             loading={true}

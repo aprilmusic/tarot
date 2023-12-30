@@ -36,6 +36,12 @@ function App() {
     null,
     null,
   ]);
+  const [reversalStates, setReversalStates] = useState<Array<boolean>>([
+    false,
+    false,
+    false,
+  ]);
+
   const sessionId = useSessionId();
 
   const sendMessage = useMutation(api.messages.send);
@@ -68,23 +74,25 @@ function App() {
 
   // Prompt engineering
   const readFortune = async () => {
+    // Randomly select 3 cards
     const deckOrder = fisherYatesShuffle([...Array(78).keys()]);
     const selectedCards = deckOrder.slice(0, 3);
     setFortuneCards(selectedCards);
+    // Randomly decide whether they are reversed
+    setReversalStates([false, false, false].map((_) => Math.random() > 0.5));
+
     const message = `I am seeking a tarot reading to answer the question ${question}. My first card is ${
       tarotJson.find((x) => x.number === deckOrder[0])?.name
-    },
-    my second card is ${
+    }${reversalStates[0] ? " reversed" : ""}, my second card is ${
       tarotJson.find((x) => x.number === deckOrder[1])?.name
-    }, and my third card is ${
+    }${reversalStates[1] ? " reversed" : ""}, and my third card is ${
       tarotJson.find((x) => x.number === deckOrder[2])?.name
+    }${
+      reversalStates[2] ? " which is reversed" : "which is not reversed"
     }. If the question is a yes or no question, interpret the first card as "what will happen if yes", the 
     second card as "what will happen if no", and the third card as context. If it is not a yes or no question, 
-    interpret all of the cards as general context for the question. Please help me 
-    interpret these cards, and begin your response with, "The spirits have answered." Express your answer 
-    as a json, where the the first sentence is labeled intro, the analysis of the first card is labeled first_card, 
-    the analysis of the second card is labeled second_card, the analysis of the third card is labeled third_card, 
-    and the rest is labeled conclusion.
+    interpret all of the cards as the general answer for the question. Please help me 
+    interpret these cards, and begin your response with, "The spirits have answered."
     `;
     const newQuestionId = uuidv4();
     setQuestionId(newQuestionId);
@@ -151,6 +159,7 @@ function App() {
         {clickerOpen && fortuneCards.some((x) => x) && (
           <Fortune
             cards={fortuneCards}
+            reversalStates={reversalStates}
             useSessionId={useSessionId}
             questionId={questionId}
           />
