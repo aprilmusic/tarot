@@ -8,6 +8,25 @@ import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api.js";
 import tarotJson from "@/assets/tarot_card_list.json";
 import { v4 as uuidv4 } from "uuid";
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@emotion/react";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#A0A0D5",
+      // light: will be calculated from palette.primary.main,
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      main: "#441e1e",
+      // light: "#F5EBFF",
+      // dark: will be calculated from palette.secondary.main,
+      // contrastText: "#47008F",
+    },
+  },
+});
 
 const STORE = (typeof window === "undefined" ? null : window)?.sessionStorage;
 const STORE_KEY = "ConvexSessionId";
@@ -89,9 +108,9 @@ function App() {
       tarotJson.find((x) => x.number === deckOrder[2])?.name
     }${
       reversalStates[2] ? " which is reversed" : "which is not reversed"
-    }. If the question is a yes or no question, interpret the first card as "what will happen if yes", the 
-    second card as "what will happen if no", and the third card as context. If it is not a yes or no question, 
-    interpret all of the cards as the general answer for the question. Please help me 
+    }. ONLY if the question is a yes or no question, interpret the first card as "what will happen if yes", the
+    second card as "what will happen if no", and the third card as context. Otherwise,
+    interpret all of the cards as the general answer for the question. Take into account whether the cards are reversed, too. Please help me
     interpret these cards, and begin your response with, "The spirits have answered."
     `;
     const newQuestionId = uuidv4();
@@ -100,72 +119,84 @@ function App() {
   };
 
   return (
-    <main className="container  flex flex-col gap-8">
-      <Stack alignSelf="center" alignContent="center" justifyContent="center">
-        <h1 className="text-4xl font-extrabold my-8 text-center">
-          Read your tarot here
-        </h1>
-        <p className="text-center">
-          Ask a question, then select 3 cards, and we will read your tarot for
-          you!
-        </p>
-        {question === "" ? (
-          <Stack maxWidth="80%" alignSelf="center">
-            <form onSubmit={handleSubmit}>
-              <Stack spacing="8px">
-                <body>What question are you trying to answer?</body>
-                <TextField
-                  label="What is my future?"
-                  variant="outlined"
-                  color="primary"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                />
-                <Button color="info" type="submit">
-                  Submit
-                </Button>
-              </Stack>
-            </form>
-          </Stack>
-        ) : !clickerOpen ? (
-          <Stack maxWidth="80%" alignSelf="center">
-            <h2>{question}</h2>
-            <Button color="info" onClick={() => setQuestion("")}>
-              Change question
+    <ThemeProvider theme={theme}>
+      <main className="container flex flex-col gap-8">
+        <Stack alignSelf="center" alignContent="center" justifyContent="center">
+          <h1 className="text-4xl font-extrabold my-8 text-center fadeIn">
+            Read your tarot here
+          </h1>
+          <br></br>
+          <p className="text-center fadeIn">
+            Ask a question, then select 3 cards, and we will read your tarot for
+            you!
+          </p>
+          <br></br>
+          {question === "" ? (
+            <Stack alignSelf="center" spacing="8px">
+              <form onSubmit={handleSubmit}>
+                <Stack>
+                  <h2 className="fadeIn">
+                    What do you want to ask the spirits?
+                  </h2>
+                  <TextField
+                    hiddenLabel
+                    defaultValue="What should I be focusing on?"
+                    color="primary"
+                    value={inputValue}
+                    margin="normal"
+                    onChange={handleInputChange}
+                    className="fadeIn"
+                  />
+                  <Button className="fadeIn" color="primary" type="submit">
+                    Submit
+                  </Button>
+                </Stack>
+              </form>
+            </Stack>
+          ) : !clickerOpen ? (
+            <Stack alignSelf="center">
+              <h2 className="fadeIn">Your question: {question}</h2>
+              <Button color="primary" onClick={() => setQuestion("")}>
+                Change question
+              </Button>
+            </Stack>
+          ) : (
+            <Stack
+              maxWidth="80%"
+              alignSelf="center"
+              direction="row"
+              alignContent="center"
+            >
+              <h2>Your question: {question}</h2>
+            </Stack>
+          )}
+          {question.length > 0 && (
+            <Button
+              color="primary"
+              onClick={() => {
+                // Reset everything
+                setFortuneCards([null, null, null]);
+                setClickerOpen(!clickerOpen);
+                setQuestionId("");
+              }}
+            >
+              {clickerOpen ? "Reselect" : "Select"} my cards
             </Button>
-          </Stack>
-        ) : (
-          <Stack maxWidth="80%" alignSelf="center">
-            <h2>{question}</h2>
-          </Stack>
-        )}
-
-        {question.length > 0 && (
-          <Button
-            color="info"
-            onClick={() => {
-              // Reset everything
-              setFortuneCards([null, null, null]);
-              setClickerOpen(!clickerOpen);
-              setQuestionId("");
-            }}
-          >
-            {clickerOpen ? "Reselect" : "Select"} my cards
-          </Button>
-        )}
-        {clickerOpen && !fortuneCards.some((x) => x) && (
-          <CardClicker readFortune={readFortune} />
-        )}
-        {clickerOpen && fortuneCards.some((x) => x) && (
-          <Fortune
-            cards={fortuneCards}
-            reversalStates={reversalStates}
-            useSessionId={useSessionId}
-            questionId={questionId}
-          />
-        )}
-      </Stack>
-    </main>
+          )}
+          {clickerOpen && !fortuneCards.some((x) => x) && (
+            <CardClicker readFortune={readFortune} />
+          )}
+          {clickerOpen && fortuneCards.some((x) => x) && (
+            <Fortune
+              cards={fortuneCards}
+              reversalStates={reversalStates}
+              useSessionId={useSessionId}
+              questionId={questionId}
+            />
+          )}
+        </Stack>
+      </main>
+    </ThemeProvider>
   );
 }
 

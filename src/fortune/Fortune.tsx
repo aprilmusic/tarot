@@ -21,6 +21,16 @@ import { IMAGES } from "@/assets/tarot_card_fronts/images.js";
 // }
 
 function parseFortune(rawFortune: string) {
+  if (rawFortune === "I cannot reply at this time.") {
+    return (
+      <Stack style={{ marginTop: "10px" }} spacing="2px">
+        <p>
+          Your advanced fortune analysis is unavailable at this time. Please
+          check out https://www.tarot.com/tarot/cards for more detail.
+        </p>
+      </Stack>
+    );
+  }
   return (
     <Stack style={{ marginTop: "10px" }} spacing="2px">
       <p>{rawFortune}</p>
@@ -46,13 +56,9 @@ export default function Fortune({
   }, [fortunes]);
 
   return (
-    <Stack>
-      <Stack
-        maxWidth="80%"
-        alignSelf="center"
-        direction="row"
-        alignContent="center"
-      >
+    <Stack className="fadeIn">
+      <Stack maxWidth="80%" alignSelf="center" direction="row">
+        <br></br>
         {cards.map((card, i) => {
           const tarotCard = tarotJson.find((x) => x.number === card);
           return (
@@ -61,6 +67,10 @@ export default function Fortune({
               spacing="10px"
               maxHeight="100%"
               divider={<Divider orientation="vertical" flexItem />}
+              // Stagger the fade-in
+              className={
+                i === 0 ? "fadeIn" : i === 1 ? "fadeInLater" : "fadeInLatest"
+              }
             >
               <img
                 src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}
@@ -75,6 +85,7 @@ export default function Fortune({
               <Stack
                 style={{
                   alignSelf: "center",
+                  padding: "5px",
                 }}
               >
                 <p
@@ -106,9 +117,10 @@ export default function Fortune({
             marginTop: "10px",
           }}
           spacing="45px"
+          className="fadeInLatest"
         >
           <p style={{ alignSelf: "center" }}>
-            Your fortune is loading. This can take up to a minute.
+            Your detailed fortune is loading. This can take up to a minute.
           </p>
           <PuffLoader
             loading={true}
