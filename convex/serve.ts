@@ -35,40 +35,6 @@ export const answer = internalAction({
   },
 });
 
-// const getOrCreateThread = async (
-//   ctx: ActionCtx,
-//   openai: OpenAI,
-//   sessionId: string
-// ) => {
-//   const thread = await ctx.runQuery(internal.serve.getThread, { sessionId });
-//   if (thread !== null) {
-//     return thread.threadId;
-//   }
-//   const { id: threadId } = await openai.beta.threads.create();
-//   await ctx.runMutation(internal.serve.saveThread, {
-//     sessionId,
-//     threadId,
-//   });
-//   return threadId;
-// };
-
-export const getThread = internalQuery(
-  async (ctx, { sessionId }: { sessionId: string }) => {
-    return await ctx.db
-      .query("threads")
-      .withIndex("bySessionId", (q) => q.eq("sessionId", sessionId))
-      .unique();
-  }
-);
-
-export const saveThread = internalMutation(
-  async (
-    ctx,
-    { sessionId, threadId }: { sessionId: string; threadId: string }
-  ) => {
-    await ctx.db.insert("threads", { sessionId, threadId });
-  }
-);
 
 
 async function pollForAnswer(

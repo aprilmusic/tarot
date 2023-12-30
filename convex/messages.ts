@@ -3,17 +3,6 @@ import { mutation } from "./_generated/server";
 import { query } from "./_generated/server";
 import { internal } from "./_generated/api";
 
-export const list = query({
-  args: {
-    sessionId: v.string(),
-  },
-  handler: async (ctx, args) => {
-    return await ctx.db
-      .query("messages")
-      .withIndex("bySessionId", (q) => q.eq("sessionId", args.sessionId))
-      .collect();
-  },
-});
 
 
 export const getFortune = query({
