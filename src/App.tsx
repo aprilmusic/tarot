@@ -110,7 +110,8 @@ function App() {
       reversalStates[2] ? " which is reversed" : "which is not reversed"
     }. ONLY if the question is a yes or no question, interpret the first card as "what will happen if yes", the
     second card as "what will happen if no", and the third card as context. Otherwise,
-    interpret all of the cards as the general answer for the question. Take into account whether the cards are reversed, too. Please help me
+    interpret all of the cards as the general answer for the question and do not mention yes or no questions. 
+    Take into account whether the cards are reversed. Please help me
     interpret these cards, and begin your response with, "The spirits have answered."
     `;
     const newQuestionId = uuidv4();
@@ -145,7 +146,7 @@ function App() {
                     sx={{
                       input: { color: "white", opacity: 0.8 },
                       fieldset: { borderColor: "white" },
-                      label: { color: "white" },
+                      label: { color: "white", fontFamily: "Avenir" },
                     }}
                     InputProps={{
                       classes: {

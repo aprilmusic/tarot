@@ -52,10 +52,15 @@ p {
 
 Button {
   align-self: center;
+  font-family: "Avenir";
 }
 
 .whiteTextField {
   border-color: white
+}
+
+.fadeInFast {
+  animation: fadeIn 1s;
 }
 
 .fadeIn {

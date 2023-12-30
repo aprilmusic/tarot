@@ -1,5 +1,5 @@
 import tarotJson from "@/assets/tarot_card_list.json";
-import { Divider } from "@mui/material";
+import { Grid } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import cardBack from "@/assets/card_back.png";
 import { useQuery } from "convex/react";
@@ -7,18 +7,6 @@ import { api } from "../../convex/_generated/api.js";
 import { useMemo } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { IMAGES } from "@/assets/tarot_card_fronts/images.js";
-
-// function stringifyIndex(n: number) {
-//   if (n === 0) {
-//     return "first";
-//   }
-//   if (n === 1) {
-//     return "second";
-//   }
-//   if (n === 2) {
-//     return "third";
-//   }
-// }
 
 function parseFortune(rawFortune: string) {
   if (rawFortune === "I cannot reply at this time.") {
@@ -56,22 +44,26 @@ export default function Fortune({
   }, [fortunes]);
 
   return (
-    <Stack className="fadeIn">
-      <Stack maxWidth="80%" alignSelf="center" direction="row">
+    <Stack className="fadeIn" style={{ marginTop: "5px" }}>
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
         <br></br>
         {cards.map((card, i) => {
           const tarotCard = tarotJson.find((x) => x.number === card);
           return (
-            <Stack
+            <Grid
+              item
               key={i}
               spacing="10px"
               maxHeight="100%"
-              divider={<Divider orientation="vertical" flexItem />}
               // Stagger the fade-in
               className={
                 i === 0 ? "fadeIn" : i === 1 ? "fadeInLater" : "fadeInLatest"
               }
               width="33%"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignContent="center"
             >
               <img
                 src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}
@@ -101,10 +93,10 @@ export default function Fortune({
                   Associations: {tarotCard?.meaning.toLowerCase()}
                 </p>
               </Stack>
-            </Stack>
+            </Grid>
           );
         })}
-      </Stack>
+      </Grid>
 
       {fortune && fortune.text ? (
         <p style={{ alignSelf: "center", marginTop: "5px", maxWidth: "80%" }}>
