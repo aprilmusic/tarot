@@ -20,7 +20,7 @@ const theme = createTheme({
       // contrastText: will be calculated to contrast with palette.primary.main
     },
     secondary: {
-      main: "#441e1e",
+      main: "#E4E4F3",
       // light: "#F5EBFF",
       // dark: will be calculated from palette.secondary.main,
       // contrastText: "#47008F",
@@ -122,9 +122,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <main className="container flex flex-col gap-8">
         <Stack alignSelf="center" alignContent="center" justifyContent="center">
-          <h1 className="text-4xl font-extrabold my-8 text-center fadeIn">
-            Read your tarot here
-          </h1>
+          <h1 className="my-8 text-center fadeIn">Read your tarot here</h1>
           <br></br>
           <p className="text-center fadeIn">
             Ask a question, then select 3 cards, and we will read your tarot for
@@ -134,21 +132,24 @@ function App() {
           {question === "" ? (
             <Stack alignSelf="center" spacing="8px">
               <form onSubmit={handleSubmit}>
-                <Stack>
-                  <h2 className="fadeIn">
-                    What do you want to ask the spirits?
-                  </h2>
+                <Stack minWidth="80%">
                   <TextField
-                    hiddenLabel
+                    label="What question do you have?"
                     defaultValue="What should I be focusing on?"
-                    color="primary"
+                    color="secondary"
                     value={inputValue}
                     margin="normal"
                     onChange={handleInputChange}
                     className="fadeIn"
-                    sx={{ input: { color: "white" } }}
+                    fullWidth={true}
+                    sx={{ input: { color: "white", opacity: 0.8 } }}
+                    InputProps={{
+                      classes: {
+                        notchedOutline: "whiteTextField",
+                      },
+                    }}
                   />
-                  <Button className="fadeIn" color="primary" type="submit">
+                  <Button className="fadeIn" color="secondary" type="submit">
                     Submit
                   </Button>
                 </Stack>
@@ -157,7 +158,7 @@ function App() {
           ) : !clickerOpen ? (
             <Stack alignSelf="center">
               <h2 className="fadeIn">Your question: {question}</h2>
-              <Button color="primary" onClick={() => setQuestion("")}>
+              <Button color="secondary" onClick={() => setQuestion("")}>
                 Change question
               </Button>
             </Stack>
@@ -173,7 +174,7 @@ function App() {
           )}
           {question.length > 0 && (
             <Button
-              color="primary"
+              color="secondary"
               onClick={() => {
                 // Reset everything
                 setFortuneCards([null, null, null]);

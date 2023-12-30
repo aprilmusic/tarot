@@ -36,8 +36,9 @@
 
 h1 {
   position: relative;
-  font-family: "Avenir", monospace!important;
+  font-family: "Avenir", monospace;
   white-space: nowrap;
+  font-size: 64px;
 }
 
 h2 {
@@ -54,6 +55,10 @@ p {
 
 Button {
   align-self: center;
+}
+
+.whiteTextField {
+  border-color: white
 }
 
 .fadeIn {
