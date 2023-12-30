@@ -142,7 +142,11 @@ function App() {
                     onChange={handleInputChange}
                     className="fadeIn"
                     fullWidth={true}
-                    sx={{ input: { color: "white", opacity: 0.8 } }}
+                    sx={{
+                      input: { color: "white", opacity: 0.8 },
+                      fieldset: { borderColor: "white" },
+                      label: { color: "white" },
+                    }}
                     InputProps={{
                       classes: {
                         notchedOutline: "whiteTextField",

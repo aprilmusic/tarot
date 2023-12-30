@@ -71,6 +71,7 @@ export default function Fortune({
               className={
                 i === 0 ? "fadeIn" : i === 1 ? "fadeInLater" : "fadeInLatest"
               }
+              width="33%"
             >
               <img
                 src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}

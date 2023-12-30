@@ -35,14 +35,11 @@
 }
 
 h1 {
-  position: relative;
-  font-family: "Avenir", monospace;
-  white-space: nowrap;
+  font-family: "Avenir";
   font-size: 64px;
 }
 
 h2 {
-  position: relative;
   font-family: "Avenir";
   font-style: italic;
   font-size: 24px;
@@ -62,15 +59,15 @@ Button {
 }
 
 .fadeIn {
-  animation: fadeIn 5s;
+  animation: fadeIn 3s;
 }
 
 .fadeInLater {
-  animation: fadeInOffset 6s;
+  animation: fadeInOffset 5s;
 }
 
 .fadeInLatest {
-  animation: fadeInOffset 8s;
+  animation: fadeInOffset 7s;
 }
 
 
