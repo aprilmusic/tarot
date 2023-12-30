@@ -6,6 +6,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api.js";
 import { useMemo } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
+import { IMAGES } from "@/assets/tarot_card_fronts/images.js";
 
 function stringifyIndex(n: number) {
   if (n === 0) {
@@ -67,7 +68,7 @@ export default function Fortune({
               divider={<Divider orientation="vertical" flexItem />}
             >
               <img
-                src={cardBack}
+                src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}
                 alt={`${tarotCard?.name}`}
                 style={{ width: "150px", height: "auto", alignSelf: "center" }}
               />
