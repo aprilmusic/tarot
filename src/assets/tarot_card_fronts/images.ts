@@ -18,7 +18,7 @@ import tower from "@/assets/tarot_card_fronts/tower.png"
 import star from "@/assets/tarot_card_fronts/star.png"
 import moon from "@/assets/tarot_card_fronts/moon.png"
 import sun from "@/assets/tarot_card_fronts/sun.png"
-import judgment from "@/assets/tarot_card_fronts/judgment.png"
+import judgement from "@/assets/tarot_card_fronts/judgement.png"
 import world from "@/assets/tarot_card_fronts/world.png"
 import cups_ace from "@/assets/tarot_card_fronts/cups_ace.png"
 import cups_2 from "@/assets/tarot_card_fronts/cups_2.png"
@@ -99,7 +99,7 @@ export const IMAGES : {[key:string] : any} = {
 "star":star,
 "moon":moon,
 "sun":sun,
-"judgment":judgment,
+"judgement":judgement,
 "world":world,
 "cups_ace":cups_ace,
 "cups_2":cups_2,
