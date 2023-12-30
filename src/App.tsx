@@ -146,6 +146,7 @@ function App() {
                     margin="normal"
                     onChange={handleInputChange}
                     className="fadeIn"
+                    sx={{ input: { color: "white" } }}
                   />
                   <Button className="fadeIn" color="primary" type="submit">
                     Submit
