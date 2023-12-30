@@ -114,7 +114,7 @@ export default function Fortune({
           style={{
             alignSelf: "center",
             alignContent: "center",
-            marginTop: "10px",
+            marginTop: "20px",
           }}
           spacing="45px"
           className="fadeInLatest"
