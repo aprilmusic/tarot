@@ -75,6 +75,23 @@ Button {
   animation: fadeInOffset 7s;
 }
 
+#flexCardContainer {
+  display: block;
+  width: 100%;
+  @media only screen and (min-width: 1024px) {
+    display: flex; 
+    align-items: flex-start;
+  }
+}
+
+.flexCard {
+  width: 100%;
+  @media only screen and (min-width: 1024px) {
+    width: 33%
+  }
+}
+
+
 
 @keyframes fadeIn {
   0% { opacity: 0; }

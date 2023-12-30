@@ -45,7 +45,12 @@ export default function Fortune({
 
   return (
     <Stack className="fadeIn" style={{ marginTop: "5px" }}>
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
+      <Grid
+        id="flexCardContainer"
+        container
+        spacing={2}
+        justifyContent="center"
+      >
         <br></br>
         {cards.map((card, i) => {
           const tarotCard = tarotJson.find((x) => x.number === card);
@@ -56,14 +61,12 @@ export default function Fortune({
               spacing="10px"
               maxHeight="100%"
               // Stagger the fade-in
-              className={
+              className={`${
                 i === 0 ? "fadeIn" : i === 1 ? "fadeInLater" : "fadeInLatest"
-              }
-              width="33%"
+              } flexCard`}
               display="flex"
               flexDirection="column"
               justifyContent="center"
-              alignContent="center"
             >
               <img
                 src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}
