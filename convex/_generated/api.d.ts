@@ -15,7 +15,6 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as helpers from "../helpers";
-import type * as ingest_load from "../ingest/load";
 import type * as init from "../init";
 import type * as messages from "../messages";
 import type * as serve from "../serve";
@@ -30,7 +29,6 @@ import type * as serve from "../serve";
  */
 declare const fullApi: ApiFromModules<{
   helpers: typeof helpers;
-  "ingest/load": typeof ingest_load;
   init: typeof init;
   messages: typeof messages;
   serve: typeof serve;

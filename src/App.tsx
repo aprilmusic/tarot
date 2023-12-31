@@ -147,7 +147,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <main className="container flex flex-col gap-8">
-        <Stack alignSelf="center" alignContent="center" justifyContent="center">
+        <Stack
+          alignSelf="center"
+          alignContent="center"
+          justifyContent="center"
+          minHeight="90%"
+        >
           <h1 className="my-8 text-center fadeIn">Read your tarot here</h1>
           <br></br>
           <p className="text-center fadeIn">
@@ -229,6 +234,28 @@ function App() {
           )}
           <br></br>
         </Stack>
+        <br style={{ marginTop: "20px" }} />
+        <footer className="fadeIn">
+          <p
+            style={{
+              textAlign: "center",
+              paddingBottom: "10px",
+              paddingTop: "10px",
+              justifySelf: "center",
+              width: "100%",
+              opacity: 0.5,
+            }}
+          >
+            Any feedback? Fill out this{" "}
+            <a
+              target="_blank"
+              href="https://airtable.com/app3n1XnvByn5IQh1/pagfEn87lCa2B9J1e/form"
+              style={{ textDecoration: "underline" }}
+            >
+              form
+            </a>
+          </p>
+        </footer>
       </main>
     </ThemeProvider>
   );
