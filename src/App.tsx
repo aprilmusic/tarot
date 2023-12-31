@@ -115,6 +115,13 @@ function App() {
     // Randomly decide whether they are reversed
     setReversalStates([false, false, false].map((_) => Math.random() > 0.5));
 
+    const isQuestionYesOrNo =
+      question.toLowerCase().startsWith("should") ||
+      question.toLowerCase().startsWith("will") ||
+      question.toLowerCase().startsWith("is") ||
+      question.toLowerCase().startsWith("does") ||
+      question.toLowerCase().startsWith("can");
+
     const message = `I am seeking a tarot reading to answer the question ${question}. My first card is ${
       tarotJson.find((x) => x.number === deckOrder[0])?.name
     }${reversalStates[0] ? " reversed" : ""}, my second card is ${
@@ -123,11 +130,14 @@ function App() {
       tarotJson.find((x) => x.number === deckOrder[2])?.name
     }${
       reversalStates[2] ? " which is reversed" : "which is not reversed"
-    }. ONLY if the question is a yes or no question, interpret the first card as "what will happen if yes", the
-    second card as "what will happen if no", and the third card as context. Otherwise,
-    interpret all of the cards as the general answer for the question and do not mention yes or no questions. 
-    Take into account whether the cards are reversed. Please help me
-    interpret these cards, and begin your response with, "The spirits have answered."
+    }. Take into account whether the cards are reversed. Please help me
+    interpret these cards, and begin your response with, "The spirits have answered"
+    ${
+      isQuestionYesOrNo
+        ? `Interpret the first card as what if yes, the
+    second card as what if no, and the third card as context.`
+        : `Interpret all of the cards as the general answer for the question.`
+    }.  
     `;
     const newQuestionId = uuidv4();
     setQuestionId(newQuestionId);
