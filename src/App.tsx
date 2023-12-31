@@ -124,12 +124,12 @@ function App() {
 
     const message = `I am seeking a tarot reading to answer the question ${question}. My first card is ${
       tarotJson.find((x) => x.number === deckOrder[0])?.name
-    }${reversalStates[0] ? " reversed" : ""}, my second card is ${
+    }${reversalStates[0] ? " which is reversed" : ""}, my second card is ${
       tarotJson.find((x) => x.number === deckOrder[1])?.name
-    }${reversalStates[1] ? " reversed" : ""}, and my third card is ${
+    }${reversalStates[1] ? " which is reversed" : ""}, and my third card is ${
       tarotJson.find((x) => x.number === deckOrder[2])?.name
     }${
-      reversalStates[2] ? " which is reversed" : "which is not reversed"
+      reversalStates[2] ? " which is reversed" : "d"
     }. Take into account whether the cards are reversed. Please help me
     interpret these cards, and begin your response with, "The spirits have answered"
     ${
