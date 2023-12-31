@@ -7,6 +7,7 @@ import { api } from "../../convex/_generated/api.js";
 import { useMemo } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { IMAGES } from "@/assets/tarot_card_fronts/images.js";
+import { ReactJSXElement } from "node_modules/@emotion/react/dist/declarations/types/jsx-namespace.js";
 
 function parseFortune(rawFortune: string) {
   if (rawFortune === "I cannot reply at this time.") {
@@ -19,9 +20,12 @@ function parseFortune(rawFortune: string) {
       </Stack>
     );
   }
+  const fortuneSplit = rawFortune.split("\n\n");
   return (
     <Stack style={{ marginTop: "10px" }} spacing="2px">
-      <p>{rawFortune}</p>
+      {fortuneSplit.map((fortuneLine) => (
+        <p>{fortuneLine}</p>
+      ))}
     </Stack>
   );
 }
@@ -31,17 +35,17 @@ export default function Fortune({
   reversalStates,
   useSessionId,
   questionId,
+  resetButton,
 }: {
   cards: Array<number | null>;
   reversalStates: Array<boolean>;
   useSessionId: () => string;
   questionId: string;
+  resetButton: ReactJSXElement;
 }) {
   const sessionId = useSessionId();
   const fortunes = useQuery(api.messages.getFortune, { sessionId, questionId });
-  const fortune = useMemo(() => {
-    return fortunes ? fortunes[0] : null;
-  }, [fortunes]);
+  const fortune = useMemo(() => (fortunes ? fortunes[0] : null), [fortunes]);
 
   return (
     <Stack className="fadeIn" style={{ marginTop: "5px" }}>
@@ -102,9 +106,12 @@ export default function Fortune({
       </Grid>
 
       {fortune && fortune.text ? (
-        <p style={{ alignSelf: "center", marginTop: "5px", maxWidth: "80%" }}>
-          {parseFortune(fortune.text)}
-        </p>
+        <Stack spacing="5px">
+          <p style={{ alignSelf: "center", marginTop: "5px", maxWidth: "80%" }}>
+            {parseFortune(fortune.text)}
+          </p>
+          {resetButton}
+        </Stack>
       ) : (
         <Stack
           style={{

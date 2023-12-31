@@ -91,6 +91,21 @@ function App() {
     return shuffledArray;
   }
 
+  const resetButton = (
+    <Button
+      className="fadeIn"
+      color="secondary"
+      onClick={() => {
+        setFortuneCards([null, null, null]);
+        setQuestion("");
+        setClickerOpen(!clickerOpen);
+        setQuestionId("");
+      }}
+    >
+      Ask another question
+    </Button>
+  );
+
   // Prompt engineering
   const readFortune = async () => {
     // Randomly select 3 cards
@@ -199,6 +214,7 @@ function App() {
               reversalStates={reversalStates}
               useSessionId={useSessionId}
               questionId={questionId}
+              resetButton={resetButton}
             />
           )}
           <br></br>
