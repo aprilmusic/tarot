@@ -2,7 +2,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { FormEvent, useEffect, useState } from "react";
 import CardClicker from "./cardDeck/CardClicker";
-import { TextField } from "@mui/material";
+import { TextField, Tooltip } from "@mui/material";
 import Fortune from "./fortune/Fortune";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api.js";
@@ -152,31 +152,34 @@ function App() {
           alignContent="center"
           justifyContent="center"
           minHeight="90%"
+          gap="16px"
         >
-          <h1 className="my-8 text-center fadeIn">Read your tarot here</h1>
-          <br></br>
-          <p className="text-center fadeIn">
-            Ask a question, then select 3 cards, and we will read your tarot for
-            you!
-          </p>
-          <br></br>
+          {question === "" && (
+            <Tooltip
+              title="Ask a question, then select 3 cards, and we will read your tarot for you!"
+              placement="top-end"
+            >
+              <h1 className="my-8 text-center fadeIn fadeOut">
+                Read your tarot here
+              </h1>
+            </Tooltip>
+          )}
           {question === "" ? (
-            <Stack alignSelf="center" spacing="8px">
+            <Stack alignSelf="center" spacing="8px" width="100%">
               <form onSubmit={handleSubmit}>
-                <Stack minWidth="80%">
+                <Stack minWidth="80%" className="fadeIn">
                   <TextField
-                    label="What question do you have?"
                     defaultValue="What should I be focusing on?"
                     color="secondary"
                     value={inputValue}
                     margin="normal"
                     onChange={handleInputChange}
-                    className="fadeIn"
                     fullWidth={true}
                     sx={{
                       input: { color: "white", opacity: 0.8 },
                       fieldset: { borderColor: "white" },
                       label: { color: "white", fontFamily: "Avenir" },
+                      minWidth: "80%",
                     }}
                     InputProps={{
                       classes: {
@@ -184,16 +187,20 @@ function App() {
                       },
                     }}
                   />
-                  <Button className="fadeIn" color="secondary" type="submit">
-                    Submit
+                  <Button color="secondary" type="submit">
+                    Select my cards
                   </Button>
                 </Stack>
               </form>
             </Stack>
           ) : !clickerOpen ? (
             <Stack alignSelf="center">
-              <h2 className="fadeIn">Your question: {question}</h2>
-              <Button color="secondary" onClick={() => setQuestion("")}>
+              <h2 className="fadeIn text-center">Your question: {question}</h2>
+              <Button
+                color="secondary"
+                className="fadeIn"
+                onClick={() => setQuestion("")}
+              >
                 Change question
               </Button>
             </Stack>
@@ -210,6 +217,7 @@ function App() {
           {question.length > 0 && (
             <Button
               color="secondary"
+              className="fadeIn"
               onClick={() => {
                 // Reset everything
                 setFortuneCards([null, null, null]);
@@ -232,31 +240,29 @@ function App() {
               resetButton={resetButton}
             />
           )}
-          <br></br>
         </Stack>
-        <br style={{ marginTop: "20px" }} />
-        <footer className="fadeIn">
-          <p
-            style={{
-              textAlign: "center",
-              paddingBottom: "10px",
-              paddingTop: "10px",
-              justifySelf: "center",
-              width: "100%",
-              opacity: 0.5,
-            }}
-          >
-            Any feedback? Fill out this{" "}
-            <a
-              target="_blank"
-              href="https://airtable.com/app3n1XnvByn5IQh1/pagfEn87lCa2B9J1e/form"
-              style={{ textDecoration: "underline" }}
-            >
-              form
-            </a>
-          </p>
-        </footer>
       </main>
+      <footer className="fadeIn">
+        <p
+          style={{
+            textAlign: "center",
+            paddingBottom: "10px",
+            paddingTop: "10px",
+            justifySelf: "center",
+            width: "100%",
+            opacity: 0.5,
+          }}
+        >
+          Any feedback? Fill out this{" "}
+          <a
+            target="_blank"
+            href="https://airtable.com/app3n1XnvByn5IQh1/pagfEn87lCa2B9J1e/form"
+            style={{ textDecoration: "underline" }}
+          >
+            form
+          </a>
+        </p>
+      </footer>
     </ThemeProvider>
   );
 }

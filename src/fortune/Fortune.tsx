@@ -48,14 +48,13 @@ export default function Fortune({
   const fortune = useMemo(() => (fortunes ? fortunes[0] : null), [fortunes]);
 
   return (
-    <Stack className="fadeIn" style={{ marginTop: "5px" }}>
+    <Stack className="fadeIn" style={{ marginTop: "5px" }} gap="16px">
       <Grid
         id="flexCardContainer"
         container
         spacing={2}
         justifyContent="center"
       >
-        <br></br>
         {cards.map((card, i) => {
           const tarotCard = tarotJson.find((x) => x.number === card);
           return (

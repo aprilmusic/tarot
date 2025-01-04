@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #root {
+  height: 100%;
+  margin: 0; 
+}
+
+
 @layer base {
   :root {
     --background: 240 40.6% 15%;
@@ -42,7 +48,8 @@ h1 {
 h2 {
   font-family: "Avenir";
   font-style: italic;
-  font-size: 24px;
+  font-size: 48px;
+  text-align: center;
 }
 
 p {
@@ -56,7 +63,12 @@ Button {
 }
 
 .whiteTextField {
-  border-color: white
+  border-color: white;
+  text-align: right;
+}
+
+.fadeOut {
+  animation: fadeOut 1s;
 }
 
 .fadeInFast {
@@ -97,7 +109,7 @@ main {
 }
 
 footer {
-  position:absolute;
+  // position:absolute;
   bottom: 0;
   left: 0;
   right: 0;
