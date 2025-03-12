@@ -1,5 +1,5 @@
 import tarotJson from "@/assets/tarot_card_list.json";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import cardBack from "@/assets/card_back.png";
 import { useQuery } from "convex/react";
@@ -8,6 +8,11 @@ import { useMemo } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
 import { IMAGES } from "@/assets/tarot_card_fronts/images.js";
 import { ReactJSXElement } from "node_modules/@emotion/react/dist/declarations/types/jsx-namespace.js";
+
+// Consistent transition timing variables for cohesive feel
+const TRANSITION_DURATION = "0.4s";
+const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)";
+const TRANSITION = `${TRANSITION_DURATION} ${TRANSITION_EASING}`;
 
 function parseFortune(rawFortune: string) {
   if (rawFortune === "I cannot reply at this time.") {
@@ -23,8 +28,8 @@ function parseFortune(rawFortune: string) {
   const fortuneSplit = rawFortune.split("\n\n");
   return (
     <Stack style={{ marginTop: "10px" }} spacing="2px">
-      {fortuneSplit.map((fortuneLine) => (
-        <p>{fortuneLine}</p>
+      {fortuneSplit.map((fortuneLine, index) => (
+        <p key={index}>{fortuneLine}</p>
       ))}
     </Stack>
   );
@@ -48,12 +53,18 @@ export default function Fortune({
   const fortune = useMemo(() => (fortunes ? fortunes[0] : null), [fortunes]);
 
   return (
-    <Stack className="fadeIn" style={{ marginTop: "5px" }} gap="16px">
+    <Stack
+      className="fadeIn"
+      style={{ marginTop: "5px" }}
+      gap="16px"
+      sx={{ transition: TRANSITION }}
+    >
       <Grid
         id="flexCardContainer"
         container
         spacing={2}
         justifyContent="center"
+        sx={{ transition: TRANSITION }}
       >
         {cards.map((card, i) => {
           const tarotCard = tarotJson.find((x) => x.number === card);
@@ -70,6 +81,7 @@ export default function Fortune({
               display="flex"
               flexDirection="column"
               justifyContent="center"
+              sx={{ transition: TRANSITION }}
             >
               <img
                 src={tarotCard?.image ? IMAGES[tarotCard.image] : cardBack}
@@ -79,23 +91,26 @@ export default function Fortune({
                   height: "auto",
                   alignSelf: "center",
                   transform: reversalStates[i] ? "rotate(180deg)" : "",
+                  transition: TRANSITION,
                 }}
               />
               <Stack
                 style={{
                   alignSelf: "center",
                   padding: "5px",
+                  transition: TRANSITION,
                 }}
               >
                 <p
                   style={{
                     alignSelf: "center",
                     minHeight: "50px",
+                    transition: TRANSITION,
                   }}
                 >
                   {tarotCard?.name} {reversalStates[i] ? "(reversed)" : ""}
                 </p>
-                <p style={{ fontStyle: "italic" }}>
+                <p style={{ fontStyle: "italic", transition: TRANSITION }}>
                   Associations: {tarotCard?.meaning.toLowerCase()}
                 </p>
               </Stack>
@@ -104,38 +119,57 @@ export default function Fortune({
         })}
       </Grid>
 
-      {fortune && fortune.text ? (
-        <Stack spacing="5px">
-          <p style={{ alignSelf: "center", marginTop: "5px", maxWidth: "80%" }}>
-            {parseFortune(fortune.text)}
+      {fortune ? (
+        <Stack spacing="5px" sx={{ transition: TRANSITION }}>
+          <p
+            style={{
+              alignSelf: "center",
+              marginTop: "5px",
+              maxWidth: "80%",
+              transition: TRANSITION,
+            }}
+          >
+            {fortune && parseFortune(fortune.text)}
           </p>
           {resetButton}
         </Stack>
       ) : (
-        <Stack
-          style={{
-            alignSelf: "center",
-            alignContent: "center",
-            marginTop: "20px",
-            marginBottom: "10px",
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            mt: 3,
+            mb: 2,
+            minHeight: "150px",
+            transition: TRANSITION,
           }}
-          spacing="45px"
           className="fadeInLatest"
         >
-          <p style={{ alignSelf: "center" }}>
+          <p
+            style={{
+              textAlign: "center",
+              marginBottom: "30px",
+              transition: TRANSITION,
+            }}
+          >
             Your detailed fortune is loading. This can take up to a minute.
           </p>
+
           <PuffLoader
             loading={true}
-            size={40}
+            size={50}
             color="gray"
             aria-label="Loading Spinner"
-            style={{
-              alignSelf: "center",
-              position: "fixed",
+            cssOverride={{
+              display: "block",
+              margin: "0 auto",
+              transition: TRANSITION,
             }}
           />
-        </Stack>
+        </Box>
       )}
     </Stack>
   );
